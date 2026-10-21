@@ -1,0 +1,18 @@
+# SVG to Code - Multi-Framework Vector Component Generator
+> https://ahmedelazabdev.github.io/svgtocode/
+
+## Overview
+SVG to Code is a client-side developer application engineered to transform raw Scalable Vector Graphics (SVG) markup into production-ready frontend components and stylesheet assets. It bridges the gap between design tool exports and modern component frameworks including React (JSX/TSX), React Native (react-native-svg), Vue 3 SFCs, and CSS Data URIs.
+
+## Technical Transformations
+- React (JSX): Automatically maps kebab-case SVG attributes (stroke-width, fill-rule, clip-path) to camelCase JSX properties (strokeWidth, fillRule, clipPath), replaces `class` with `className`, and adds `{...props}` forwarding.
+- React Native: Converts standard lowercase vector DOM nodes (`<svg>`, `<path>`, `<circle>`, `<rect>`) into capitalized `react-native-svg` primitives (`<Svg>`, `<Path>`, `<Circle>`, `<Rect>`), bundling necessary named imports.
+- Vue 3: Generates Single-File Components (SFC) encapsulated in `<template>` tags.
+- CSS Data URI: Strips whitespace and applies safe URL encoding to generate ready-to-paste `background-image: url("data:image/svg+xml,...")` declarations without base64 overhead.
+- Base64: Compiles RFC 4648 data URIs (`data:image/svg+xml;base64,...`) for offline and standalone embedding.
+- Color Inversion: Replaces static color fills and strokes with `currentColor` for dynamic theme inheritance.
+
+## Privacy & Performance
+- Execution: 100% Client-side JavaScript execution in-browser via DOMParser and regex engines.
+- Security: Zero server requests, no graphic transmission, fully private offline execution.
+- Zero CLS: Preloaded responsive layout preventing layout shifts.
