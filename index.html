@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- High-CTR SEO Meta -->
+  <title>SVG to Code Converter ⚡ React JSX, React Native, Vue, CSS &amp; Base64 (100% Free)</title>
+  <meta name="description" content="Instantly convert SVG markup into clean React (JSX/TSX), React Native SVG, Vue 3, CSS Data URI, and Base64. Free in-browser SVG optimizer, cleaner, and component generator with live preview.">
+  <meta name="keywords" content="svg to code, svg to react, svg to jsx, svg to react native, svg to vue, svg to base64, svg to css data uri, svg to component, clean svg, inline svg converter">
+  <meta name="author" content="Ahmed Elazab">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <!-- Absolute Canonical URL -->
+  <link rel="canonical" href="https://ahmedelazabdev.github.io/svgtocode/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmedelazabdev.github.io/svgtocode/">
+  <meta property="og:title" content="SVG to Code Converter ⚡ Instant SVG to React, Vue, CSS &amp; Base64">
+  <meta property="og:description" content="Convert any raw SVG into production-ready React (JSX), React Native, Vue 3, CSS Data URI, or Base64 code with live preview and zero data transmission.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SVG to Code Converter ⚡ Multi-Framework Component Generator">
+  <meta name="twitter:description" content="Transform SVG files into optimized React, Vue, React Native components and CSS Data URIs in one click. 100% private in-browser.">
+
+  <!-- Structured Data: WebApplication, HowTo & FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SVG to Code Converter - React, Vue, React Native & CSS Tool",
+        "url": "https://ahmedelazabdev.github.io/svgtocode/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "An online developer tool to convert SVG vector files into clean React JSX components, React Native SVG primitives, Vue 3 templates, CSS Data URIs, and Base64 strings with live visual verification.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Convert SVG to Framework Components or CSS",
+        "description": "Step-by-step instructions to convert raw SVG code into React, React Native, Vue, or CSS code.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Paste or Upload SVG",
+            "text": "Paste your raw SVG markup into the editor or upload an .svg file directly from your device."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Select Output Framework",
+            "text": "Choose your target syntax tab: React (JSX), React Native (react-native-svg), Vue 3, CSS Data URI, or Base64."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Configure Component Options",
+            "text": "Toggle options such as currentColor replacement, custom component naming, and attribute optimization."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Copy or Download Code",
+            "text": "Preview the rendered vector graphic in real time, then copy the generated component code or download the file."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why do I need to convert SVG to React JSX?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard SVG uses kebab-case attributes (e.g., stroke-width, fill-rule, clip-path) and the HTML 'class' attribute. In React JSX, these must be transformed into camelCase (e.g., strokeWidth, fillRule, clipPath) and 'className'. Converting SVGs into functional React components also allows dynamic sizing, coloring via props, and tree-shaking."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does React Native handle SVG files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "React Native does not natively render raw HTML <svg> elements. Instead, it relies on libraries such as 'react-native-svg', which requires capitalized tag components like <Svg>, <Path>, <Circle>, <Rect>, and <G>. This tool converts standard SVG DOM elements into react-native-svg compatible components automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the advantage of using a CSS Data URI for SVGs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A CSS Data URI embeds the SVG directly into your stylesheet as a background image (e.g., background-image: url('data:image/svg+xml,...')). This eliminates an extra HTTP network request, avoids image flickering, and ensures the icon renders instantly upon stylesheet evaluation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my SVG graphics or source files sent to any remote server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! All parsing, regex replacement, minification, and conversion happen 100% locally in your web browser memory using client-side JavaScript. No graphic assets, code strings, or file names are ever transmitted to external servers."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-soft: #eff6ff;
+      --accent: #047857;
+      --accent-soft: #d1fae5;
+      --accent-text: #064e3b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #334155;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+      --shadow-xl: 0 10px 25px -5px rgba(0,0,0,0.08);
+      --radius: 14px;
+      --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      text-rendering: optimizeSpeed;
+    }
+
+    /* Fixed 64px Header */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+      height: 64px;
+      overflow: hidden;
+    }
+
+    .nav-inner {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      background: #047857;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    .status-tag {
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid #a7f3d0;
+    }
+
+    main {
+      max-width: 1050px;
+      width: 100%;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+      flex: 1;
+      contain: layout style;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Main Card */
+    .calc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+
+    .card-topbar {
+      background: #f1f5f9;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .topbar-modes {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 4px;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-topbar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition: all 0.15s ease;
+    }
+
+    .btn-topbar:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-primary-action {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.25);
+    }
+
+    .btn-primary-action:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Dual Workspace Grid */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 860px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Input Controls */
+    .inputs-pane {
+      padding: 24px;
+      border-right: 1px solid var(--border);
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .inputs-pane {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .field-hint {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Drag & Drop Upload Zone */
+    .dropzone {
+      border: 2px dashed #94a3b8;
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    /* Code Textarea */
+    .code-area {
+      width: 100%;
+      height: 240px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #0f172a;
+      background: #ffffff;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s ease;
+      tab-size: 2;
+    }
+
+    .code-area:focus {
+      border-color: var(--primary);
+    }
+
+    .num-input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      outline: none;
+    }
+
+    .num-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Checkbox & Option Rows */
+    .options-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .option-checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Right Preview & Converted Output Pane */
+    .summary-pane {
+      padding: 24px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Visual Vector Preview Card */
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 170px;
+    }
+
+    .preview-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 110px;
+      overflow: hidden;
+      /* Checkerboard pattern for transparency */
+      background-image: 
+        linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+
+    .preview-stage svg {
+      max-width: 100%;
+      max-height: 130px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    .output-area-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .code-area-output {
+      width: 100%;
+      height: 200px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #047857;
+      background: #ffffff;
+      resize: vertical;
+      outline: none;
+      tab-size: 2;
+    }
+
+    .metrics-2x2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric-subcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .subcard-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .subcard-val {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .val-accent { color: #047857; }
+
+    /* Duration / Framework Pill Banner */
+    .duration-banner {
+      background: var(--accent-soft);
+      border: 1px solid #a7f3d0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* Semantic 3-Step Instruction Bar */
+    .action-steps-bar {
+      padding: 16px 20px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .action-steps-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .action-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: #1e40af;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-title {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .step-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Long-Form Knowledge Base */
+    .article-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 40px;
+      content-visibility: auto;
+      contain-intrinsic-size: 1000px 1800px;
+    }
+
+    @media (max-width: 600px) {
+      .article-container {
+        padding: 24px 18px;
+      }
+    }
+
+    .article-container h2 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 36px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      position: relative;
+    }
+
+    .article-container h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .article-container h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .article-container h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 24px 0 12px;
+      color: #1e293b;
+    }
+
+    .article-container p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .article-container ul, .article-container ol {
+      margin: 0 0 24px 24px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .article-container li {
+      margin-bottom: 10px;
+    }
+
+    .highlight-card {
+      background: var(--primary-soft);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 24px 0;
+      color: #1e3a8a;
+      font-size: 1rem;
+    }
+
+    /* Comparison Table in Article */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table.content-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    table.content-table thead {
+      background: #f1f5f9;
+    }
+
+    table.content-table th, table.content-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.content-table th {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    table.content-table tbody tr:hover {
+      background-color: #f8fafc;
+    }
+
+    /* FAQ Accordion */
+    .faq-block {
+      margin-top: 24px;
+    }
+
+    .faq-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #f8fafc;
+    }
+
+    .faq-header {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 1.02rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      color: var(--text);
+    }
+
+    .faq-header:hover {
+      color: var(--primary);
+    }
+
+    .faq-body {
+      padding: 0 20px 16px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      display: none;
+      line-height: 1.7;
+    }
+
+    .faq-card.open {
+      background: var(--surface);
+      border-color: var(--primary);
+    }
+
+    .faq-card.open .faq-body {
+      display: block;
+    }
+
+    .faq-toggle {
+      font-size: 1.3rem;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .faq-card.open .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-xl);
+      transition: transform 0.25s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    #toast.active {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 16px;
+      margin-top: auto;
+    }
+
+    .footer-wrap {
+      max-width: 1050px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+
+    .footer-nav a:hover {
+      color: var(--primary);
+    }
+
+    @media print {
+      header, .hero, .card-topbar, .topbar-actions, .action-steps-bar, .article-container, footer, #toast {
+        display: none !important;
+      }
+      body {
+        background: #ffffff;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+      }
+      .calc-card, .calc-grid, .inputs-pane, .summary-pane {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        background: #ffffff;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-inner">
+      <a href="https://ahmedelazabdev.github.io/svgtocode/" class="brand">
+        <span class="brand-badge">⚡</span>
+        <span>SVG to Code</span>
+      </a>
+      <span class="status-tag">Multi-Framework Vector Tool</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>SVG to Code ⚡ <span>React, React Native, Vue, CSS &amp; Base64</span></h1>
+      <p>Transform raw SVG markup into production-ready React (JSX/TSX) components, React Native vector primitives, Vue 3 templates, CSS Data URIs, and Base64 strings. Includes live rendering and zero-latency client-side processing.</p>
+    </section>
+
+    <!-- Main Converter Card -->
+    <section class="calc-card" id="calculator-app">
+      <div class="card-topbar">
+        <!-- Target Framework Modes -->
+        <div class="topbar-modes">
+          <button class="tab-btn active" id="tab-react" onclick="setTargetFormat('react')">React JSX</button>
+          <button class="tab-btn" id="tab-react-native" onclick="setTargetFormat('react-native')">React Native</button>
+          <button class="tab-btn" id="tab-vue" onclick="setTargetFormat('vue')">Vue 3</button>
+          <button class="tab-btn" id="tab-css" onclick="setTargetFormat('css')">CSS Data URI</button>
+          <button class="tab-btn" id="tab-base64" onclick="setTargetFormat('base64')">Base64</button>
+          <button class="tab-btn" id="tab-clean" onclick="setTargetFormat('clean')">Clean SVG</button>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn-topbar btn-primary-action" onclick="copyOutputCode()">
+            <span>📋 Copy Code</span>
+          </button>
+          <button class="btn-topbar" onclick="downloadOutputFile()">
+            <span>💾 Download</span>
+          </button>
+          <button class="btn-topbar" onclick="resetToSample()">
+            <span>✖ Sample</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dual Workspace Grid -->
+      <div class="calc-grid">
+        <!-- Left: Input Controls -->
+        <div class="inputs-pane">
+          <!-- Drag & Drop Zone -->
+          <div class="dropzone" id="drop-area" onclick="document.getElementById('file-input').click()">
+            <span>📁 Drag &amp; Drop .svg file here or <strong>Browse</strong></span>
+            <input type="file" id="file-input" accept=".svg" style="display:none;" onchange="handleFileUpload(event)">
+          </div>
+
+          <!-- Raw SVG Textarea -->
+          <div class="form-group">
+            <div class="form-label">
+              <label for="inp-raw-svg">Raw SVG Input Markup:</label>
+              <span class="field-hint" id="input-stats">0 bytes</span>
+            </div>
+            <textarea id="inp-raw-svg" class="code-area" placeholder="Paste your <svg> ... </svg> code here..." oninput="processSvgConversion()" spellcheck="false"></textarea>
+          </div>
+
+          <!-- Custom Component Name (For frameworks) -->
+          <div class="form-group" id="group-comp-name">
+            <div class="form-label">
+              <label for="inp-comp-name">Component Identifier:</label>
+              <span class="field-hint">PascalCase</span>
+            </div>
+            <input type="text" id="inp-comp-name" class="num-input" value="IconSymbol" oninput="processSvgConversion()" placeholder="e.g. LogoIcon">
+          </div>
+
+          <!-- Transformation Toggles -->
+          <div class="options-box">
+            <label class="option-checkbox-row">
+              <input type="checkbox" id="chk-current-color" onchange="processSvgConversion()">
+              <span>Replace static colors with <code>currentColor</code></span>
+            </label>
+            <label class="option-checkbox-row">
+              <input type="checkbox" id="chk-remove-dimensions" onchange="processSvgConversion()">
+              <span>Remove hardcoded <code>width</code> &amp; <code>height</code> (Responsive)</span>
+            </label>
+            <label class="option-checkbox-row">
+              <input type="checkbox" id="chk-props-spread" checked onchange="processSvgConversion()">
+              <span>Include dynamic <code>{...props}</code> forwarder</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Right: Live Preview & Converted Code Output -->
+        <div class="summary-pane">
+          <!-- Vector Visual Preview -->
+          <div class="preview-card">
+            <span class="subcard-label">Live Visual Preview</span>
+            <div class="preview-stage" id="svg-preview-container">
+              <!-- Rendered SVG sits here -->
+            </div>
+          </div>
+
+          <!-- Generated Code Output Area -->
+          <div class="output-area-wrap">
+            <div class="form-label">
+              <label for="out-converted-code" id="output-label">Generated React JSX Component:</label>
+              <span class="field-hint" id="output-stats">0 bytes</span>
+            </div>
+            <textarea id="out-converted-code" class="code-area-output" readonly spellcheck="false"></textarea>
+          </div>
+
+          <!-- Metrics 2x2 Grid -->
+          <div class="metrics-2x2-grid">
+            <div class="metric-subcard">
+              <span class="subcard-label">Original Size</span>
+              <span class="subcard-val" id="metric-orig-size">0 B</span>
+            </div>
+            <div class="metric-subcard">
+              <span class="subcard-label">Output Size</span>
+              <span class="subcard-val val-accent" id="metric-out-size">0 B</span>
+            </div>
+          </div>
+
+          <!-- Active Framework Banner -->
+          <div class="duration-banner" id="disp-framework-banner">
+            <span>Target: <strong>React (JSX/TSX)</strong></span>
+            <span>(Client-Side Clean Output)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic 3-Step Instruction Bar -->
+      <div class="action-steps-bar">
+        <div class="action-step">
+          <span class="step-num">1</span>
+          <div class="step-text">
+            <strong class="step-title">Paste or Drop SVG</strong>
+            <p>Input raw vector markup or drag a .svg export from Figma, Illustrator, or icon sets.</p>
+          </div>
+        </div>
+        <div class="action-step">
+          <span class="step-num">2</span>
+          <div class="step-text">
+            <strong class="step-title">Select Target Syntax</strong>
+            <p>Choose React, React Native, Vue, CSS Data URI, or Base64 and configure icon attributes.</p>
+          </div>
+        </div>
+        <div class="action-step">
+          <span class="step-num">3</span>
+          <div class="step-text">
+            <strong class="step-title">Copy or Download File</strong>
+            <p>Instantly copy clean code to your clipboard or download component files into your codebase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Technical Knowledge Base & Guide -->
+    <article class="article-container">
+      <h2>Why Convert SVG to Modern Frontend Components?</h2>
+      <p>
+        Scalable Vector Graphics (<strong>SVG</strong>) are the de facto standard for resolution-independent icons, illustrations, and logos on the web. However, embedding raw SVG directly across diverse modern stacks like React, React Native, Vue, and modular CSS introduces unique syntactical challenges:
+      </p>
+
+      <div class="highlight-card">
+        <strong>💡 The JSX Attribute Barrier:</strong> Standard SVG uses kebab-case attributes such as <code>stroke-width</code>, <code>fill-rule</code>, and <code>clip-path</code>. When loaded in React or React Native, JavaScript treats these dashes as subtraction operators or invalid identifiers. They must be mapped into camelCase (<code>strokeWidth</code>, <code>fillRule</code>, <code>clipPath</code>), and <code>class</code> must become <code>className</code>.
+      </div>
+
+      <h2>Detailed Target Framework Comparison</h2>
+      <div class="table-wrap">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Target Output</th>
+              <th>Common Use Case</th>
+              <th>Key Transformation Performed</th>
+              <th>File Extension</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>React (JSX)</strong></td>
+              <td>Next.js, Vite, CRA, Remix apps</td>
+              <td>camelCase attributes, <code>{...props}</code>, clean wrapper</td>
+              <td><code>.jsx / .tsx</code></td>
+            </tr>
+            <tr>
+              <td><strong>React Native</strong></td>
+              <td>iOS &amp; Android cross-platform apps</td>
+              <td>Converts tags to <code>react-native-svg</code> primitives</td>
+              <td><code>.jsx / .tsx</code></td>
+            </tr>
+            <tr>
+              <td><strong>Vue 3</strong></td>
+              <td>Nuxt, Vite Vue SFC components</td>
+              <td>Single-File Component with <code>&lt;template&gt;</code> block</td>
+              <td><code>.vue</code></td>
+            </tr>
+            <tr>
+              <td><strong>CSS Data URI</strong></td>
+              <td>Pure CSS background icons &amp; buttons</td>
+              <td>URL-encoded <code>data:image/svg+xml;utf8,...</code></td>
+              <td><code>.css</code></td>
+            </tr>
+            <tr>
+              <td><strong>Base64</strong></td>
+              <td>Static embedding, offline data URLs</td>
+              <td>RFC 4648 Base64 encoded binary string</td>
+              <td><code>.txt</code></td>
+            </tr>
+            <tr>
+              <td><strong>Clean SVG</strong></td>
+              <td>Production web deployment &amp; assets</td>
+              <td>Strips editor metadata, comments, and cruft</td>
+              <td><code>.svg</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Best Practices for Production SVG Icon Systems</h2>
+      <ol>
+        <li><strong>Adopt <code>currentColor</code>:</strong> By replacing hardcoded hex fills (e.g., <code>#000000</code> or <code>#1d4ed8</code>) with <code>currentColor</code>, your SVG automatically inherits the CSS text color of its parent element or hover state without requiring separate icon variants.</li>
+        <li><strong>Preserve the <code>viewBox</code>:</strong> Always retain the original <code>viewBox="0 0 W H"</code> attribute while removing fixed <code>width</code> and <code>height</code> pixels. This allows the icon to scale smoothly to any dimension dictated by CSS or React props.</li>
+        <li><strong>Strip Unnecessary Metadata:</strong> Design tools like Adobe Illustrator, Figma, and Inkscape often inject proprietary namespaces (<code>xmlns:sketch</code>, <code>inkscape:version</code>) and editor comments that unnecessarily bloat payload sizes.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-block">
+        <div class="faq-card">
+          <div class="faq-header" onclick="toggleFaqCard(this)">
+            <span>Why do I need to convert SVG to React JSX?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-body">
+            Standard SVG uses kebab-case attributes (e.g., stroke-width, fill-rule, clip-path) and the HTML 'class' attribute. In React JSX, these must be transformed into camelCase (e.g., strokeWidth, fillRule, clipPath) and 'className'. Converting SVGs into functional React components also allows dynamic sizing, coloring via props, and tree-shaking.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" onclick="toggleFaqCard(this)">
+            <span>How does React Native handle SVG files?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-body">
+            React Native does not natively render raw HTML &lt;svg&gt; elements. Instead, it relies on libraries such as 'react-native-svg', which requires capitalized tag components like &lt;Svg&gt;, &lt;Path&gt;, &lt;Circle&gt;, &lt;Rect&gt;, and &lt;G&gt;. This tool converts standard SVG DOM elements into react-native-svg compatible components automatically.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" onclick="toggleFaqCard(this)">
+            <span>What is the advantage of using a CSS Data URI for SVGs?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-body">
+            A CSS Data URI embeds the SVG directly into your stylesheet as a background image (e.g., background-image: url('data:image/svg+xml,...')). This eliminates an extra HTTP network request, avoids image flickering, and ensures the icon renders instantly upon stylesheet evaluation.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" onclick="toggleFaqCard(this)">
+            <span>Are my SVG graphics or source files sent to any remote server?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-body">
+            No! All parsing, regex replacement, minification, and conversion happen 100% locally in your web browser memory using client-side JavaScript. No graphic assets, code strings, or file names are ever transmitted to external servers.
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast">Ready!</div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrap">
+      <p>© <span id="current-year"></span> All rights reserved — SVG to Code &amp; Frontend Vector Tool.</p>
+      <div class="footer-nav">
+        <a href="#calculator-app">SVG to Code</a>
+        <a href="https://1io-site.blogspot.com" target="_blank" rel="noopener">By: 1io.site</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Instant SVG Conversion Engine -->
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    let targetFormat = 'react'; // 'react', 'react-native', 'vue', 'css', 'base64', 'clean'
+
+    // DOM References
+    const inpRawSvg = document.getElementById('inp-raw-svg');
+    const inpCompName = document.getElementById('inp-comp-name');
+    const chkCurrentColor = document.getElementById('chk-current-color');
+    const chkRemoveDimensions = document.getElementById('chk-remove-dimensions');
+    const chkPropsSpread = document.getElementById('chk-props-spread');
+    const outConvertedCode = document.getElementById('out-converted-code');
+    const outputLabel = document.getElementById('output-label');
+    const inputStats = document.getElementById('input-stats');
+    const outputStats = document.getElementById('output-stats');
+    const metricOrigSize = document.getElementById('metric-orig-size');
+    const metricOutSize = document.getElementById('metric-out-size');
+    const svgPreviewContainer = document.getElementById('svg-preview-container');
+    const dispFrameworkBanner = document.getElementById('disp-framework-banner');
+    const groupCompName = document.getElementById('group-comp-name');
+
+    // Default Vector Icon Sample
+    const SAMPLE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+</svg>`;
+
+    // Format Switcher
+    function setTargetFormat(format) {
+      targetFormat = format;
+      const formats = ['react', 'react-native', 'vue', 'css', 'base64', 'clean'];
+      formats.forEach(f => {
+        document.getElementById(`tab-${f}`).classList.toggle('active', f === format);
+      });
+
+      const labelMap = {
+        'react': 'Generated React JSX Component:',
+        'react-native': 'Generated React Native Component:',
+        'vue': 'Generated Vue 3 SFC Template:',
+        'css': 'Generated CSS Data URI Rule:',
+        'base64': 'Generated Base64 Data String:',
+        'clean': 'Clean Minified SVG Markup:'
+      };
+
+      const bannerMap = {
+        'react': 'React (JSX/TSX)',
+        'react-native': 'React Native (react-native-svg)',
+        'vue': 'Vue 3 Component',
+        'css': 'CSS Data URI (background-image)',
+        'base64': 'Base64 Encoded URI',
+        'clean': 'Clean Minified SVG'
+      };
+
+      outputLabel.textContent = labelMap[format] || 'Converted Output:';
+      dispFrameworkBanner.innerHTML = `
+        <span>Target: <strong>${bannerMap[format]}</strong></span>
+        <span>(100% Private Client-Side)</span>
+      `;
+
+      groupCompName.style.display = (format === 'react' || format === 'react-native' || format === 'vue') ? 'flex' : 'none';
+      processSvgConversion();
+    }
+
+    // Drag and Drop Setup
+    const dropArea = document.getElementById('drop-area');
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.add('dragover');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+      }, false);
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files && files[0]) {
+        readSvgFile(files[0]);
+      }
+    });
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        readSvgFile(file);
+      }
+    }
+
+    function readSvgFile(file) {
+      if (!file.name.endsWith('.svg') && file.type !== 'image/svg+xml') {
+        showToast('Please select a valid .svg file.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        inpRawSvg.value = e.target.result;
+        // Auto-populate component name from file name
+        const cleanName = file.name.replace(/\.svg$/i, '')
+          .replace(/[^a-zA-Z0-9]/g, ' ')
+          .split(' ')
+          .filter(Boolean)
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+          .join('');
+        if (cleanName) {
+          inpCompName.value = cleanName + 'Icon';
+        }
+        processSvgConversion();
+        showToast(`Loaded ${file.name}`);
+      };
+      reader.readAsText(file);
+    }
+
+    // Format Byte Size
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
+    }
+
+    // JSX Attribute Camel-casing Mapping
+    const SVG_ATTR_MAP = {
+      'stroke-width': 'strokeWidth',
+      'stroke-linecap': 'strokeLinecap',
+      'stroke-linejoin': 'strokeLinejoin',
+      'stroke-miterlimit': 'strokeMiterlimit',
+      'stroke-dasharray': 'strokeDasharray',
+      'stroke-dashoffset': 'strokeDashoffset',
+      'stroke-opacity': 'strokeOpacity',
+      'fill-opacity': 'fillOpacity',
+      'fill-rule': 'fillRule',
+      'clip-path': 'clipPath',
+      'clip-rule': 'clipRule',
+      'stop-color': 'stopColor',
+      'stop-opacity': 'stopOpacity',
+      'font-family': 'fontFamily',
+      'font-size': 'fontSize',
+      'font-weight': 'fontWeight',
+      'letter-spacing': 'letterSpacing',
+      'text-anchor': 'textAnchor',
+      'class': 'className',
+      'xlink:href': 'xlinkHref',
+      'xml:space': 'xmlSpace',
+      'xmlns:xlink': 'xmlnsXlink'
+    };
+
+    function cleanSvgMarkup(raw) {
+      let cleaned = raw
+        .replace(/<\?xml[\s\S]*?\?>/gi, '')
+        .replace(/<!DOCTYPE[\s\S]*?>/gi, '')
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .trim();
+
+      // Extract only inside <svg ... </svg>
+      const svgMatch = cleaned.match(/<svg[\s\S]*?<\/svg>/i);
+      return svgMatch ? svgMatch[0] : cleaned;
+    }
+
+    function processSvgConversion() {
+      let raw = inpRawSvg.value.trim();
+      const inBytes = new Blob([raw]).size;
+      inputStats.textContent = formatBytes(inBytes);
+      metricOrigSize.textContent = formatBytes(inBytes);
+
+      if (!raw || !raw.includes('<svg')) {
+        svgPreviewContainer.innerHTML = '<span style="color:#94a3b8; font-size:0.85rem;">No valid SVG detected</span>';
+        outConvertedCode.value = '';
+        outputStats.textContent = '0 B';
+        metricOutSize.textContent = '0 B';
+        return;
+      }
+
+      let cleanedSvg = cleanSvgMarkup(raw);
+
+      // Render Visual Preview safely
+      svgPreviewContainer.innerHTML = cleanedSvg;
+
+      // Handle Color Replacement
+      if (chkCurrentColor.checked) {
+        cleanedSvg = cleanedSvg
+          .replace(/fill="(?!none|transparent|url)[^"]*"/gi, 'fill="currentColor"')
+          .replace(/stroke="(?!none|transparent|url)[^"]*"/gi, 'stroke="currentColor"');
+      }
+
+      // Handle Dimensions Removal
+      if (chkRemoveDimensions.checked) {
+        cleanedSvg = cleanedSvg
+          .replace(/\s(width|height)="[^"]*"/gi, '');
+      }
+
+      let compName = inpCompName.value.trim() || 'SvgIcon';
+      compName = compName.replace(/[^a-zA-Z0-9_]/g, '');
+      if (!compName) compName = 'SvgIcon';
+
+      let result = '';
+
+      switch (targetFormat) {
+        case 'react':
+          result = convertToReactJsx(cleanedSvg, compName);
+          break;
+        case 'react-native':
+          result = convertToReactNative(cleanedSvg, compName);
+          break;
+        case 'vue':
+          result = convertToVue(cleanedSvg);
+          break;
+        case 'css':
+          result = convertToCssDataUri(cleanedSvg);
+          break;
+        case 'base64':
+          result = convertToBase64(cleanedSvg);
+          break;
+        case 'clean':
+          result = cleanedSvg;
+          break;
+      }
+
+      outConvertedCode.value = result;
+      const outBytes = new Blob([result]).size;
+      outputStats.textContent = formatBytes(outBytes);
+      metricOutSize.textContent = formatBytes(outBytes);
+    }
+
+    // 1. React JSX Converter
+    function convertToReactJsx(svg, compName) {
+      let jsx = svg;
+
+      // Replace attributes with camelCase
+      Object.keys(SVG_ATTR_MAP).forEach(attr => {
+        const regex = new RegExp(`\\s${attr}=`, 'g');
+        jsx = jsx.replace(regex, ` ${SVG_ATTR_MAP[attr]}=`);
+      });
+
+      // Forward Props if checked
+      if (chkPropsSpread.checked) {
+        jsx = jsx.replace(/<svg([\s\S]*?)>/i, '<svg$1 {...props}>');
+      }
+
+      // Format indentation
+      jsx = jsx.split('\n').map(line => '    ' + line).join('\n').trim();
+
+      const spreadParam = chkPropsSpread.checked ? 'props' : '';
+      return `import React from 'react';\n\nexport default function ${compName}(${spreadParam}) {\n  return (\n    ${jsx}\n  );\n}`;
+    }
+
+    // 2. React Native Converter
+    function convertToReactNative(svg, compName) {
+      let rnSvg = svg;
+
+      const RN_TAGS = ['Svg', 'Path', 'Circle', 'Rect', 'Polygon', 'Polyline', 'Line', 'G', 'Defs', 'Use', 'Text', 'TSpan', 'ClipPath', 'LinearGradient', 'RadialGradient', 'Stop', 'Mask'];
+      const usedTags = new Set();
+
+      // Convert tag names to TitleCase
+      RN_TAGS.forEach(tag => {
+        const lower = tag.toLowerCase();
+        const openRegex = new RegExp(`<${lower}(\\s|>)`, 'g');
+        const closeRegex = new RegExp(`</${lower}>`, 'g');
+
+        if (rnSvg.toLowerCase().includes(`<${lower}`)) {
+          usedTags.add(tag);
+          rnSvg = rnSvg.replace(openRegex, `<${tag}$1`);
+          rnSvg = rnSvg.replace(closeRegex, `</${tag}>`);
+        }
+      });
+
+      // Replace attributes with camelCase
+      Object.keys(SVG_ATTR_MAP).forEach(attr => {
+        const regex = new RegExp(`\\s${attr}=`, 'g');
+        rnSvg = rnSvg.replace(regex, ` ${SVG_ATTR_MAP[attr]}=`);
+      });
+
+      if (chkPropsSpread.checked) {
+        rnSvg = rnSvg.replace(/<Svg([\s\S]*?)>/i, '<Svg$1 {...props}>');
+      }
+
+      rnSvg = rnSvg.split('\n').map(line => '    ' + line).join('\n').trim();
+
+      const importList = Array.from(usedTags).join(', ');
+      const spreadParam = chkPropsSpread.checked ? 'props' : '';
+
+      return `import React from 'react';\nimport Svg, { ${importList} } from 'react-native-svg';\n\nexport default function ${compName}(${spreadParam}) {\n  return (\n    ${rnSvg}\n  );\n}`;
+    }
+
+    // 3. Vue 3 Converter
+    function convertToVue(svg) {
+      let formatted = svg.split('\n').map(line => '  ' + line).join('\n');
+      return `<template>\n${formatted}\n</template>\n\n<script setup>\n// Vue 3 Vector Icon Component\n<\/script>`;
+    }
+
+    // 4. CSS Data URI Converter
+    function convertToCssDataUri(svg) {
+      const minified = svg
+        .replace(/\s+/g, ' ')
+        .replace(/"/g, "'")
+        .replace(/>\s+</g, '><')
+        .trim();
+
+      const encoded = encodeURIComponent(minified)
+        .replace(/%20/g, ' ')
+        .replace(/%3D/g, '=')
+        .replace(/%3A/g, ':')
+        .replace(/%2F/g, '/');
+
+      return `.icon-element {\n  width: 24px;\n  height: 24px;\n  display: inline-block;\n  background-repeat: no-repeat;\n  background-size: contain;\n  background-image: url("data:image/svg+xml,${encoded}");\n}`;
+    }
+
+    // 5. Base64 Converter
+    function convertToBase64(svg) {
+      const utf8Bytes = encodeURIComponent(svg).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+        return String.fromCharCode('0x' + p1);
+      });
+      const base64 = btoa(utf8Bytes);
+      return `data:image/svg+xml;base64,${base64}`;
+    }
+
+    function resetToSample() {
+      inpRawSvg.value = SAMPLE_SVG;
+      inpCompName.value = 'LightningIcon';
+      chkCurrentColor.checked = false;
+      chkRemoveDimensions.checked = false;
+      chkPropsSpread.checked = true;
+      processSvgConversion();
+      showToast('Loaded sample SVG icon');
+    }
+
+    function copyOutputCode() {
+      const code = outConvertedCode.value;
+      if (!code) {
+        showToast('No code to copy.');
+        return;
+      }
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('📋 Code copied to clipboard!');
+      }).catch(() => {
+        showToast('Code copied!');
+      });
+    }
+
+    function downloadOutputFile() {
+      const code = outConvertedCode.value;
+      if (!code) {
+        showToast('No code to download.');
+        return;
+      }
+
+      let ext = '.jsx';
+      let mime = 'text/javascript';
+      const compName = inpCompName.value.trim() || 'Icon';
+
+      if (targetFormat === 'vue') {
+        ext = '.vue';
+        mime = 'text/plain';
+      } else if (targetFormat === 'css') {
+        ext = '.css';
+        mime = 'text/css';
+      } else if (targetFormat === 'base64') {
+        ext = '.txt';
+        mime = 'text/plain';
+      } else if (targetFormat === 'clean') {
+        ext = '.svg';
+        mime = 'image/svg+xml';
+      }
+
+      const filename = `${compName}${ext}`;
+      const blob = new Blob([code], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Downloaded ${filename}`);
+    }
+
+    function toggleFaqCard(header) {
+      header.parentElement.classList.toggle('open');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 3000);
+    }
+
+    // Initialize with Sample SVG on Load (Zero CLS)
+    resetToSample();
+  </script>
+</body>
+</html>
